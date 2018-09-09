@@ -237,7 +237,9 @@ impl Step for Cargo {
         // Don't run cross-compile tests, we may not have cross-compiled libstd libs
         // available.
         cargo.env("CFG_DISABLE_CROSS_TESTS", "1");
-
+        // Disable a test that has issues with mingw.
+        cargo.env("CARGO_TEST_DISABLE_GIT_CLI", "1");
+        
         try_run(
             builder,
             cargo.env("PATH", &path_for_cargo(builder, compiler)),
