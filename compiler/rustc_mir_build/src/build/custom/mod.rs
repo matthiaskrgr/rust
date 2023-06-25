@@ -118,7 +118,7 @@ fn parse_attribute(attr: &Attribute) -> MirPhase {
                 phase = Some(value);
             }
             other => {
-                panic!("Unexpected key {}", other);
+                bug!("Unexpected key while parsing custom_mir attribute: '{}'", other);
             }
         }
     }
